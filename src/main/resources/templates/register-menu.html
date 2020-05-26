@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>메뉴 등록</h2>
+<form th:action="@{'/menu/new/' + ${storeId}}" method="post">
+    <label for="name">메뉴 이름:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <br>
+    <label for="temp">메뉴 가능한 온도: </label>
+    <input type="text" name="temp" id="temp">
+    <br>
+    <br>
+    <label for="item">가능한 아이템: </label>
+    <input type="text" name="item" id="item">
+    <br>
+    <br>
+    <label for="size">가능한 사이즈: </label>
+    <input type="text" name="size" id="size">
+    <br>
+    <br>
+    <label for="menuUrl">메뉴 url: </label>
+    <input type="text" name="menuUrl" id="menuUrl">
+    <button type="submit" class="btn btn-default join">등록</button>
+</form>
+
+
+</body>
+</html>
