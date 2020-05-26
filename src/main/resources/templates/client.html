@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<div th:if="${!clients.isEmpty()}" th:each="client : ${clients}">
+    <div class="content">
+        <div class="header" th:text="${client.email}">
+            email
+        </div>
+        <div class="description" th:text="${client.password}">
+            Password
+        </div>
+        <br>
+    </div>
+</div>
+</body>
+</html>
