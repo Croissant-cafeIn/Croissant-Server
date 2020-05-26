@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:if="${session.login == null}">
+    <a href="/login"> 로그인 하기 </a>
+    <br>
+    <br>
+    <a href="/client/new"> client 회원가입 하기 </a>
+    <br>
+    <br>
+    <a href="/client/list"> 전체 client 목록</a>
+</div>
+<div th:unless="${session.login == null}">
+    <a href="/logout"> 로그아웃 하기 </a>
+    <br>
+    <br>
+    <a href="/store/new"> 가게 등록 하기 </a>
+    <br>
+    <br>
+    <a href="/owner/list"> 전체 주인 보기 </a>
+    <br>
+    <br>
+    <a href="/store/list"> 전체 매장 보기 </a>
+</div>
+</body>
+</html>
