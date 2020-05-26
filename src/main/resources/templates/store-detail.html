@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 가게 상세 페이지</title>
+</head>
+<body>
+<h2> 나의 가게 상세 정보</h2>
+<div class="content">
+    <span>Name : </span>
+    <span th:text="${store.name}">
+        name
+    </span>
+    <br>
+    <span>Location : </span>
+    <span th:text="${store.location}">
+        location
+    </span>
+    <br>
+    <span>Theme : </span>
+    <span th:text="${store.theme}">
+        Theme
+    </span>
+    <br>
+    <p>이미지</p>
+    <img th:src="${store.storeUrl}" src="" width="150" height="100" alt="가게 이미지">
+    <br>
+    <br>
+    <a th:href="@{'/menu/new/' + ${store.id}}">메뉴 등록하러 가기</a>
+    <br>
+    <a href="/">메인으로 가기</a>
+    <br>
+    <br>
+    <div th:if="${!menus.isEmpty()}" th:each="menu : ${menus}">
+        <span>이름 : </span><span th:text="${menu.name}"> name </span>
+        <br>
+        <span>온도 : </span><span th:text="${menu.temp}">location</span>
+        <br>
+        <span>그외 : </span><span th:text="${menu.item}">location</span>
+        <br>
+        <span>사이즈 : </span><span th:text="${menu.size}">Theme</span>
+        <br>
+        <br>
+        <p>이미지</p>
+        <img th:src="${menu.menuUrl}" src="" width="150" height="100" alt="메뉴 이미지">
+        <br>
+        <br>
+    </div>
+
+</div>
+</body>
+</html>
