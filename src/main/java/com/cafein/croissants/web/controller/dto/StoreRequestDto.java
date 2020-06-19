@@ -12,10 +12,41 @@ public class StoreRequestDto {
     private String name;
     private String location;
     private String theme;
+    private String hour;
+    private String phone_number;
+    private Integer like;
     private String storeUrl;
 
     public Store toEntity(Integer ownerId) {
         return new Store(this.name, this.location
-                , this.theme, ownerId, this.storeUrl);
+                , this.theme, this.hour, this.phone_number, ownerId, this.storeUrl);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public Integer getLike() {
+        return like;
+    }
+
+    public String getStoreUrl() {
+        return storeUrl;
     }
 }

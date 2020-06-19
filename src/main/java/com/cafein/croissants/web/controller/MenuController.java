@@ -23,7 +23,7 @@ public class MenuController {
         return "register-menu";
     }
 
-    @PostMapping("/new/{storeId}")
+    @PostMapping("/new/{storeId}")  // 새로운 메뉴 등록하기
     public String registerMenu(@PathVariable Integer storeId, MenuRequestDto menuRequestDto, Model model) {
         Integer id = menuService.register(menuRequestDto, storeId);
         model.addAttribute("storeId", id);

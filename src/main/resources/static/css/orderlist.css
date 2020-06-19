@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#header {
+    text-align: right;
+    padding: 20px 30px 15px 30px;
+    height: 130px;
+    background-color: #68615e;
+    color: #4b4948;
+}
+
+#header a {
+    padding: 90px 30px 20px 30px;
+    text-decoration: none;
+    color: #eaeaea;
+}
+
+#header a:hover:not(.active) {
+    color: white;
+    font-weight: bold;
+}
+
+#header a.active {
+    color: white;
+    font-weight: bold;
+}
+
+section#container {
+    padding: 50px 150px 0px 150px;
+}
+
+div.content {
+    white-space:nowrap;
+    padding: 10px 50px 10px 10px;
+}
+
+ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    background-color: #c9c9c9;
+}
+
+ul:after {
+}
+
+ul li {
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+ul li a {
+    font-weight: bold;
+    color: #6d6d6d;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 30px 10px 30px;
+    text-decoration: none;
+    border-bottom: 3px solid #bcbcbc;
+}
+
+ul li a:hover:not(.active) {
+    font-weight: bold;
+    color: #332c2c;
+    display: inline-block;
+    border-radius: 9px 9px;
+    background-color: #bcbcbc;
+    border-bottom: 3px solid #bcbcbc;
+}
+
+ul li a.active {
+    font-weight: bold;
+    color: #483e3e;
+    border-bottom: 3px solid #483e3e;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+b{
+    font-size: 20px;
+}
+
+table {
+
+    table-layout:fixed;
+    width: 700px;
+    margin: 30px;
+}
+
+thead th {
+    padding: 5px;
+    background: #0c3390;
+    color: #fff;
+
+}
+
+tr {
+    padding: 10px;
+    white-space: nowrap;
+    background: #f1f1f1;
+}
+
+tr:nth-child(2n) {
+    background: #e0e0e0;
+}
+td {
+    padding: 10px;
+}
+
+
+.store{
+
+}
+
+.store a {
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3f3d3c;
+    margin: 5px;
+    border-bottom: 3px solid #bcbcbc;
+}
+
+.store a:hover {
+    font-style: italic;
+    font-weight: bold;
+    margin: 5px;
+    border-bottom: 3px solid #bcbcbc;
+}
+
+.star1 {
+    CLEAR: both;
+    background-image: url(/images/star1.png);
+    FLOAT: left;
+    MARGIN: 0px;
+    WIDTH: 100px;
+    HEIGHT: 20px;
+}
+
+.star2 {
+    WIDTH: 0%;
+    background-image: url(/images/star2.png);
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    PADDING-TOP: 0px;
+    HEIGHT: 20px;
+}
+
+footer {
+    clear: left;
+    padding: 150px 80px 80px 80px;
+    color: #808080;
+}

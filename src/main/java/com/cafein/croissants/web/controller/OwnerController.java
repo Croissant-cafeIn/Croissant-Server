@@ -1,14 +1,16 @@
 package com.cafein.croissants.web.controller;
 
+import com.cafein.croissants.web.controller.dto.LoginRequestDto;
 import com.cafein.croissants.web.controller.dto.OwnerRequestDto;
 import com.cafein.croissants.web.dao.domain.Owner;
+import com.cafein.croissants.web.dao.domain.Store;
 import com.cafein.croissants.web.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,22 +21,22 @@ public class OwnerController {
     @Autowired
     private OwnerService ownerService;
 
-    @GetMapping("/new")  // 가게 주인 등록
+    @GetMapping("/new")  // owner 등록
     public String registerPage() {
         return "signup";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/new") // owner 등록
     public String register(OwnerRequestDto requestDto) {
         ownerService.register(requestDto);
         return "redirect:/login";
     }
 
-    @GetMapping("/list")  // Master 전체 주인 보기
-    public String showOwners(Model model) {
-        List<Owner> owners = ownerService.findAll();
-        model.addAttribute("owners", owners);
+    @PostMapping("/login") // Android에서 Owner Login 하기
+    public ResponseEntity<Owner> login(@RequestBody LoginRequestDto loginRequestDto) {
+        Owner owner = ownerService.findByEmail(loginRequestDto.getEmail())
+                .checkPassword(loginRequestDto.getPassword());
 
-        return "owners";
+        return new ResponseEntity<>(owner, HttpStatus.OK);
     }
 }

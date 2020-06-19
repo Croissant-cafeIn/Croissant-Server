@@ -3,6 +3,7 @@ package com.cafein.croissants.web.service;
 import com.cafein.croissants.web.controller.dto.OwnerRequestDto;
 import com.cafein.croissants.web.dao.OwnerDao;
 import com.cafein.croissants.web.dao.domain.Owner;
+import com.cafein.croissants.web.service.exception.OwnerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,13 @@ public class OwnerService {
     }
 
     public Owner findByEmail(String email) {
-        return ownerDao.findByEmail(email);
+
+        try {
+            return ownerDao.findByEmail(email);
+        } catch (Exception e) {
+            throw new OwnerNotFoundException();
+        }
+
     }
 
 

@@ -17,9 +17,9 @@ public class StoreDao {
     private JdbcTemplate jdbcTemplate;
 
     public int insert(Store newStore) {
-        String query = "INSERT INTO store (name, location, theme, owner_id, store_url) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO store (name, location, theme, hour, phone_number, owner_id, store_url) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
         int result = jdbcTemplate.update(query, newStore.getName()
-                , newStore.getLocation(), newStore.getTheme()
+                , newStore.getLocation(), newStore.getTheme(),newStore.getHour(),newStore.getPhoneNumber()
                 , newStore.getOwnerId(), newStore.getStoreUrl());
 
         if(result < 0) {
@@ -36,6 +36,10 @@ public class StoreDao {
                 , rs.getString("name")
                 , rs.getString("location")
                 , rs.getString("theme")
+                , rs.getString("hour")
+                , rs.getString("phone_number")
+                , rs.getInt("like")
+                , rs.getString("congestion")
                 , rs.getInt("owner_id")
                 , rs.getString("store_url")));
     }
@@ -47,6 +51,10 @@ public class StoreDao {
                 , rs.getString("name")
                 , rs.getString("location")
                 , rs.getString("theme")
+                , rs.getString("hour")
+                , rs.getString("phone_number")
+                , rs.getInt("like")
+                , rs.getString("congestion")
                 , rs.getInt("owner_id")
                 , rs.getString("store_url")), ownerId);
     }
@@ -59,7 +67,17 @@ public class StoreDao {
                 , rs.getString("name")
                 , rs.getString("location")
                 , rs.getString("theme")
+                , rs.getString("hour")
+                , rs.getString("phone_number")
+                , rs.getInt("like")
+                , rs.getString("congestion")
                 , rs.getInt("owner_id")
                 , rs.getString("store_url")), storeId);
+    }
+
+    public void updateCongestion(Integer storeId, Integer congestion) {
+        String query = "UPDATE store SET congestion = ? WHERE store_id = ?";
+        jdbcTemplate.update(query, congestion, storeId);
+
     }
 }

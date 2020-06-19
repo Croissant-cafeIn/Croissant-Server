@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head>
+    <link rel="icon" type="image/icon" href="/images/icon.png"/>
+    <title>cafe-In</title>
+    <link rel="stylesheet" href="/css/orderlist.css">
+</head>
+
+<body>
+<div th:if="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/login">LOGIN</a>|
+            <a href="/owner/new">JOIN US</a>|
+            <a href="/login">MY PAGE</a>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/">Cafe-In이란?</a></li>
+            <li><a href="/login">가게등록</a></li>
+            <li><a href="/store/allList">이용현황</a></li>
+            <li><a class="active" href="/orderlist">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div th:unless="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/logout">LOGOUT</a>|
+            <a href="/store/mypage">MY PAGE</a>
+            <br/><br/>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/">Cafe-In이란?</a></li>
+            <li><a href="/store/new">가게등록</a></li>
+            <li><a href="/store/allList">이용현황</a></li>
+            <li><a class="active" href="/orderlist">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
+</div>
+
+<section id="container">
+    <h2>Order List</h2>
+    <hr/>
+    <div th:if="${!stores.isEmpty()}" th:each="store : ${stores}">
+        <div class="content">
+            <table>
+                <tr>
+                    <td rowspan="6"><img th:src="${store.storeUrl}" width="310" height="210"></td>
+
+                    <td><b>
+                        <div th:text="${store.name}"></div>
+                    </b></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div th:text="${store.location}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>테마 :
+                        <div th:text="${store.theme}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>영업시간 :
+                        <div th:text="${store.hour}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>전화번호 :
+                        <div th:text="${store.phoneNumber}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>평점 :
+
+                        <div th:if="${store.like} == '0'">
+                            <div class="star1">
+                                <p class="star2" style=width:0%></p></div>
+                        </div>
+                        <div th:if="${store.like} == '1'">
+                            <div class="star1">
+                                <p class="star2" style=width:20%></p></div>
+                        </div>
+                        <div th:if="${store.like} == '2'">
+                            <div class="star1">
+                                <p class="star2" style=width:40%></p></div>
+                        </div>
+                        <div th:if="${store.like} == '3'">
+                            <div class="star1">
+                                <p class="star2" style=width:60%></p></div>
+                        </div>
+                        <div th:if="${store.like} == '4'">
+                            <div class="star1">
+                                <p class="star2" style=width:80%></p></div>
+                        </div>
+                        <div th:if="${store.like} == '5'">
+                            <div class="star1">
+                                <p class="star2" style=width:100%></p></div>
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+
+            <div class="store"><a th:href="@{'/orderdetail/'+ ${store.id}}">주문내역 보기</a></div>
+
+        </div>
+
+    </div>
+    </div>
+
+</section>
+<footer>
+    &copy; 2020 Hansung University, Inc. &middot;
+</footer>
+</body>
+</html>

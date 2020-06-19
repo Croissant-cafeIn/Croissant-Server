@@ -15,10 +15,10 @@ public class MenuDao {
     private JdbcTemplate jdbcTemplate;
 
     public int insert(Menu newMenu) {
-        String query = "INSERT INTO menu (name, temp, item, size, store_id, menu_url) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO menu (name, temp, item, size, price, store_id, menu_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
         int result = jdbcTemplate.update(query, newMenu.getName()
                 , newMenu.getTemp(), newMenu.getItem()
-                , newMenu.getSize(), newMenu.getStoreId()
+                , newMenu.getSize(), newMenu.getPrice(), newMenu.getStoreId()
                 , newMenu.getMenuUrl());
 
         if (result < 0) {
@@ -36,6 +36,7 @@ public class MenuDao {
                 , rs.getString("temp")
                 , rs.getString("item")
                 , rs.getString("size")
+                , rs.getString("price")
                 , rs.getInt("store_id")
                 , rs.getString("menu_url")), storeId);
     }

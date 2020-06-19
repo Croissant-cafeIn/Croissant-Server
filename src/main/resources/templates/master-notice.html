@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head>
+    <link rel="icon" type="image/icon" href="/images/icon.png" />
+    <title>cafe-In</title>
+    <link rel="stylesheet" href="/css/master-notice.css">
+</head>
+
+<body>
+<div th:unless="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/logout">LOGOUT</a>
+            <br /><br />
+            <center><img src="/images/logo4.png" id="logo" width="420" height="75"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/master">Cafe-In</a></li>
+            <li><a href="/master/allOwnerList">Owner list</a></li>
+            <li><a href="/master/allStoreList">Store list</a></li>
+            <li><a href="/master/allClientList">Client list</a></li>
+            <li><a class="active" href="/master/notice">Notice</a></li>
+        </ul>
+    </nav>
+</div>
+    <section id="container">
+
+        <br>
+        <h2>공지사항</h2>
+        <hr />
+        <div class="message">
+            <input type="text" class="titlearea" placeholder="제목을 입력해주세요.">
+            <textarea class="message_area" placeholder="공지사항을 입력해주세요."></textarea>
+        </div>
+        <button type="submit" class="btn btn-default join">등록</button>
+    </section>
+    <footer>
+        &copy; 2020 Hansung University, Inc. &middot;
+    </footer>
+</body>
+
+</html>

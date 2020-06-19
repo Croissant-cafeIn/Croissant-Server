@@ -1,0 +1,292 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+#header {
+    text-align: right;
+    padding: 20px 30px 15px 30px;
+    height: 130px;
+    background-color: #bcb9b9;
+    color: #676160;
+}
+
+#header a {
+    padding: 90px 30px 20px 30px;
+    text-decoration: none;
+    color: #444141;
+    font-weight: bold;
+}
+
+#header a:hover:not(.active) {
+    color: #292726;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#header a.active {
+    color: #292726;
+    font-weight: bold;
+}
+
+
+#img {
+    width: 150px;
+    height: 70px;
+}
+
+article {
+    text-align: right;
+}
+
+section#container {
+    padding: 10px 300px 0px 300px;
+}
+
+div.content {
+    float: left;
+    padding: 10px 50px 10px 10px;
+}
+
+
+div.store {
+    clear: left;
+}
+
+ul {
+    font-size: 17px;
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    background-color: #706c69;
+}
+
+table {
+    padding: 10px;
+}
+
+table img {
+    padding: 15px;
+    width: 200px;
+    height: 120px;
+}
+
+ul:after {
+}
+
+ul li {
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+ul li a {
+    font-weight: bold;
+    color: #ececec;
+    display: inline-block;
+    text-align: center;
+    padding: 12px 20px 12px 20px;
+    text-decoration: none;
+}
+
+ul li a:hover:not(.active) {
+    font-weight: bold;
+    color: #fdfdfd;
+    display: inline-block;
+    background-color: #7f7b7b;
+    border-radius: 9px 9px;
+}
+
+ul li a.active {
+    font-weight: bold;
+    color: #ffffff;
+    border: 2px solid #4e4b4b;
+    background-color: #54504f;
+    border-radius: 10px 10px;
+}
+
+.message {
+    clear: both;
+    margin: 10px;
+}
+
+.message textarea {
+    clear: both;
+    width: 600px;
+    height: 250px;
+    background-color: #f1f1f1;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    margin: 20px;
+    transition: border .5s;
+    border: 2px solid #dcd9d7;
+}
+
+select {
+    text-align: left;
+    padding: 10px;
+    width: 350px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.message:focus {
+    border: 4px solid #645955;
+    box-shadow: none;
+}
+
+.btn {
+    border: 3px solid transparent;
+    background: #655c5c;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 25px;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+.btn:hover {
+    font-weight: bold;
+    background-color: #54453F;
+}
+
+footer {
+    padding: 150px 80px 80px 80px;
+    color: #808080;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_list_wrap {
+    padding: 30px;
+}
+
+.board_list_head,
+.board_list_body .item {
+    padding: 10px 0;
+    font-size: 0;
+}
+
+.board_list_head {
+    border-top: 2px solid #e0d9d9;
+    border-bottom: 1px solid #ccc;
+    background-color: #e9e3e3;
+    color: #363131;
+}
+
+.board_list_body .item {
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list_head > div,
+.board_list_body .item > div {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+}
+
+.board_list_head > div {
+    font-weight: 600;
+}
+
+.board_list .num {
+    width: 10%;
+}
+
+.board_list .tit {
+    width: 55%;
+}
+
+.board_list_body div.tit {
+    text-align: left;
+}
+
+.board_list_body div.tit a:hover {
+    text-decoration: underline;
+    text-decoration-color: #aba7a7;
+}
+
+.board_list .writer {
+    width: 10%;
+}
+
+.board_list .date {
+    width: 15%;
+}
+
+.board_list .view {
+    width: 10%;
+}
+
+.paging {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.paging a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.paging a.bt {
+    width: 30px;
+    height: 30px;
+    background-color: #b2aeae;
+    background-image: url(/images/page_bt.png);
+    background-repeat: no-repeat;
+    border-radius: 100px;
+    text-indent: -1000px;
+    overflow: hidden;
+}
+
+.paging a.bt:hover {
+    background-color: #827b7b;
+}
+
+.paging a.first {
+    background-position: 10px -40px;
+}
+
+.paging a.prev {
+    margin-right: 5px;
+    background-position: 10px 10px;
+}
+
+.paging a.next {
+    margin-left: 5px;
+    background-position: -40px 10px;
+}
+
+.paging a.last {
+    background-position: -40px -40px;
+}
+
+.paging a.num {
+    margin: 0 5px;
+    color: #5e5858;
+}
+
+.paging a.num.on {
+    color: #000000;
+    font-weight: bold;
+}
+
+.paging a.num:hover {
+    text-decoration: underline;
+}

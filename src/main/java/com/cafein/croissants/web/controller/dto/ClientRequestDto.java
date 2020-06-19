@@ -11,8 +11,21 @@ import lombok.Setter;
 public class ClientRequestDto {
     private String email;
     private String password;
+    private int point;
 
     public Client toEntity() {
-        return new Client(email, password);
+        return new Client(email, password, point);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getPoint() {
+        return point;
     }
 }

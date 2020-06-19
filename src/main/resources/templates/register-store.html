@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="icon" type="image/icon" href="/images/icon.png"/>
+    <title>cafe-In</title>
+    <link rel="stylesheet" href="/css/register-store.css">
 </head>
+
 <body>
+<div th:if="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/login">LOGIN</a>|
+            <a href="/owner/new">JOIN US</a>|
+            <a href="/login">MY PAGE</a>
+            <br/><br/>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/">Cafe-In이란?</a></li>
+            <li><a class="active" href="/login">가게등록</a></li>
+            <li><a href="/login">이용현황</a></li>
+            <li><a href="/orderlist">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
+</div>
 
-<h2>가게 등록</h2>
-<form action="/store/new" method="post">
-    <label for="name">가게 이름:</label>
-    <input type="text" name="name" id="name">
-    <br>
-    <br>
-    <label for="location">가게 위치:</label>
-    <input type="text" name="location" id="location">
-    <br>
-    <br>
-    <label for="theme">테마: </label>
-    <input type="text" name="theme" id="theme">
-    <br>
-    <br>
-    <label for="storeUrl">이미지 등록 url: </label>
-    <input type="text" name="storeUrl" id="storeUrl">
-    <button type="submit" class="btn btn-default join">등록</button>
-</form>
+<div th:unless="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/logout">LOGOUT</a>|
+            <a href="/store/mypage">MY PAGE</a>
+            <br/><br/>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/">Cafe-In이란?</a></li>
+            <li><a class="active" href="/store/new">가게등록</a></li>
+            <li><a href="/store/allList">이용현황</a></li>
+            <li><a href="/orderlist">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
+
+</div>
+
+<section id="container">
 
 
+    <h2>가게 등록</h2>
+    <hr />
+    <br />
+    <div class="content">
+        <form action="/store/new" method="post">
+            <label for="name">가게 이름</label>
+            <input type="text" name="name" id="name">
+            <br><br>
+            <label for="location">가게 위치</label>
+            <input type="text" name="location" id="location">
+            <br><br>
+            <label for="theme">테마 </label>
+            <br>
+            <input type="checkbox" name="theme" id="theme" value="24">24시<br>
+            <input type="checkbox" name="theme" id="theme" value="study">스터디<br>
+            <input type="checkbox" name="theme" id="theme" value="dessert">디저트<br><br>
+            <label for="location">영업시간</label>
+            <input type="text" name="hour" id="hour" placeholder="9:00 ~ 22:00">
+            <br><br>
+            <label for="location">전화번호</label>
+            <input type="text" name="phone_number" id="phone_number">
+            <br><br>
+            <label for="storeUrl">이미지 url</label>
+            <input type="text" name="storeUrl" id="storeUrl">
+            <button type="submit" class="btn btn-default join">등록</button>
+
+        </form>
+    </div>
+</section>
+<footer>
+    &copy; 2020 Hansung University, Inc. &middot;
+</footer>
 </body>
 </html>

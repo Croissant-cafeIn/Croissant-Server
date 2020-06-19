@@ -6,8 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/") // 메인화면
     public String home() {
         return "index";
     }
+
+    @GetMapping("/notice") // 공지사항
+    public String notice() {
+        return "notice";
+    }
+
 }

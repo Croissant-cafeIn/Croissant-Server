@@ -29,12 +29,12 @@ public class StoreController {
     @Autowired
     private MenuService menuService;
 
-    @GetMapping("/new")  // 가게 등록
+    @GetMapping("/new")  //  store register
     public String registerStorePage() {
         return "register-store";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/new")  // store register
     public String registerStore(StoreRequestDto storeRequestDto, HttpSession session) {
         Owner owner = (Owner) session.getAttribute("login");
         if(owner == null) {
@@ -44,8 +44,31 @@ public class StoreController {
 
         return "redirect:/store/list/" + id;
     }
+    @GetMapping("/mypage")  // 나의 전체 가게 리스트 조회
+    public String getMyStores(Model model, HttpSession session) {
+        Owner owner = (Owner) session.getAttribute("login");
+        if(owner == null) {
+            return "redirect:/login";
+        }
+        List<Store> stores = storeService.findAll(owner.getId());
+        model.addAttribute("stores", stores);
 
-    @GetMapping("/list/{storeId}")  // 나의 가게 상세보기
+        return "mypage";
+    }
+
+//    @GetMapping("/list")  // 나의 전체 가게 리스트 보기
+//    public String getStores(Model model, HttpSession session) {
+//        Owner owner = (Owner) session.getAttribute("login");
+//        if(owner == null) {
+//            return "redirect:/login";
+//        }
+//        List<Store> stores = storeService.findAll(owner.getId());
+//        model.addAttribute("stores", stores);
+//
+//        return "store-list";
+//    }
+
+    @GetMapping("/list/{storeId}")  // (가게 등록 후) 나의 가게 상세 조회
     public String getStore(@PathVariable Integer storeId, Model model, HttpSession session) {
         Owner owner = (Owner) session.getAttribute("login");
         if(owner == null) {
@@ -60,40 +83,42 @@ public class StoreController {
         return "store-detail";
     }
 
-    @GetMapping("/list")  // 나의 전체 가게 리스트 보기
-    public String getStores(Model model, HttpSession session) {
-        Owner owner = (Owner) session.getAttribute("login");
-        if(owner == null) {
-            return "redirect:/login";
-        }
-        List<Store> stores = storeService.findAll(owner.getId());
+    @GetMapping("/allList")  // 이용현황 (전체 가게 리스트 조회)
+    public String getALLStores(Model model) {
+        List<Store> stores = storeService.findAll();
         model.addAttribute("stores", stores);
 
-        return "store-list";
+        return "status";
     }
 
-    @GetMapping("/master/list")  // Master 가게 전체 정보 보내주기
-    public ResponseEntity<List<Store>> getAllStores(Model model) {
-
-        List<Store> stores = storeService.findAll();
-        return new ResponseEntity<List<Store>>(stores, HttpStatus.OK);
-    }
-
-    @GetMapping("/android/list")  //Android 가게 전체 정보 보내주기
+    @GetMapping("/android/list")  //Android - 이용현황 (가게 전체 정보 보내주기)
     public ResponseEntity<List<Store>> getAllStoresAd(Model model) {
-
         List<Store> stores = storeService.findAll();
         return new ResponseEntity<List<Store>>(stores, HttpStatus.OK);
     }
 
-    @GetMapping("/android/list/{storeId}") //Android 가게 메뉴 정보 보내주기
-    public ResponseEntity<List<Menu>> getStoreMenuAd(@PathVariable Integer storeId, Model model, HttpSession session) {
-        Store store = storeService.findById(storeId);
-        model.addAttribute("store", store);
-
+    @GetMapping("/android/list/{storeId}") //Android - 가게 메뉴 정보 보내주기
+    public ResponseEntity<List<Menu>> getStoreMenuAd(@PathVariable Integer storeId, Model model) {
         List<Menu> menus = menuService.findAll(storeId);
         model.addAttribute("menus", menus);
 
         return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
+    }
+
+    @GetMapping("/android/{ownerId}/storeList")  // Android-Owner에서 나의 전체 가게 리스트 보기
+    public ResponseEntity<List<Store>> getMystore(@PathVariable Integer ownerId, Model model) {
+
+        List<Store> stores = storeService.findAll(ownerId);
+        model.addAttribute("stores", stores);
+
+        return new ResponseEntity<List<Store>>(stores, HttpStatus.OK);
+    }
+    @GetMapping("/android/{storeId}/storeList/{congestion}")  // Android-Owner에서 가게 혼잡도 바꾸기
+    public ResponseEntity<Store> updateCongestion(@PathVariable Integer storeId, @PathVariable Integer congestion, Model model) {
+
+        storeService.updateCongestion(storeId, congestion); // 가게 혼잡도 바꾸기
+
+        Store store= storeService.findById(storeId);
+        return new ResponseEntity<>(store, HttpStatus.OK);
     }
 }

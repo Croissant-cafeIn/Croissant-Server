@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head>
+    <link rel="icon" type="image/icon" href="/images/icon.png" />
+    <title>cafe-In</title>
+    <link rel="stylesheet" href="/css/master-stores.css">
+</head>
+
+<body>
+<div th:unless="${session.login == null}">
+    <nav>
+        <div id="header">
+            <a href="/logout">LOGOUT</a>
+            <br /><br />
+            <center><img src="/images/logo4.png" id="logo" width="420" height="75"></center>
+        </div>
+        <ul id="menu">
+            <li><a href="/master">Cafe-In</a></li>
+            <li><a href="/master/allOwnerList">Owner list</a></li>
+            <li><a class="active" href="/master/allStoreList">Store list</a></li>
+            <li><a href="/master/allClientList">Client list</a></li>
+            <li><a href="/master/notice">Notice</a></li>
+        </ul>
+    </nav>
+</div>
+
+    <section id="container">
+        <br>
+        <h2>Store list</h2>
+        <hr />
+        <div class="content">
+            <table><thead>
+                <th><span>Name</span></th>
+                <th><span>location</span></th>
+                <th><span>theme</span></th>
+                <th><span>hour</span></th>
+                <th><span>phone_number</span></th>
+                <th><span>like</span></th>
+                <th><span>store_url</span></th>
+
+                </thead>
+                <tbody>
+                <div th:if="${!stores.isEmpty()}" th:each="store : ${stores}">
+                <tr>
+
+                    <td><div th:text="${store.name}"></div></td>
+                    <td><div th:text="${store.location}"></div></td>
+                    <td><div th:text="${store.theme}"></div></td>
+                    <td><div th:text="${store.hour}"></div></td>
+                    <td><div th:text="${store.phoneNumber}"></div></td>
+                    <td><div th:text="${store.like}"></div></td>
+                    <td><img th:src="${store.storeUrl}" width="310" height="210"></td>
+                </tr></div>
+                </tbody>
+            </table>
+            <br />
+
+        <div class="store"><div class="store"><a href="/master">메인으로 가기</a></div></div>
+        </div>
+        </div>
+    </section>
+    <footer>
+        &copy; 2020 Hansung University, Inc. &middot;
+    </footer>
+</body>
+
+</html>

@@ -29,4 +29,8 @@ public class StoreService {
     public Store findById(Integer storeId) {
         return storeDao.findById(storeId);
     }
+
+    public void updateCongestion(Integer storeId, Integer congestion) {
+        storeDao.updateCongestion(storeId, congestion);
+    }
 }

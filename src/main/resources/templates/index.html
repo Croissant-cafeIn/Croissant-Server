@@ -1,26 +1,99 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head>
+    <link rel="icon" type="image/icon" href="/images/icon.png"/>
+    <title>cafe-In</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
 <body>
 <div th:if="${session.login == null}">
-    <a href="/login"> 로그인 하기 </a>
-    <br>
-    <br>
-    <a href="/client/new"> client 회원가입 하기 </a>
-    <br>
-    <br>
-    <a href="/client/list"> 전체 client 목록</a>
+    <nav>
+        <div id="header">
+            <a href="/login">LOGIN</a>|
+            <a href="/owner/new">JOIN US</a>|
+            <a href="/login">MY PAGE</a>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a class="active" href="/">Cafe-In이란?</a></li>
+            <li><a href="/login">가게등록</a></li>
+            <li><a href="/store/allList">이용현황</a></li>
+            <li><a href="/login">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
 </div>
+
 <div th:unless="${session.login == null}">
-    <a href="/logout"> 로그아웃 하기 </a>
-    <br>
-    <br>
-    <a href="/store/new"> 가게 등록 하기 </a>
-    <br>
-    <br>
-    <a href="/owner/list"> 전체 주인 보기 </a>
-    <br>
-    <br>
-    <a href="/store/list"> 전체 매장 보기 </a>
+    <nav>
+        <div id="header">
+            <a href="/logout">LOGOUT</a>|
+            <a href="/store/mypage">MY PAGE</a>
+            <br/><br/>
+            <center><img src="/images/logo.png" width="250" height="80"></center>
+        </div>
+        <ul id="menu">
+            <li><a class="active" href="/">Cafe-In이란?</a></li>
+            <li><a href="/store/new">가게등록</a></li>
+            <li><a href="/store/allList">이용현황</a></li>
+            <li><a href="/orderlist">주문내역</a></li>
+            <li><a href="/notice">공지사항</a></li>
+        </ul>
+    </nav>
 </div>
+
+<section id="container">
+
+    <img src="/images/logo3.png" width="320" height="50">
+    <hr/>
+    <div class="content">
+        <img src="/images/seoul.jpg " width="300" height="250">
+    </div>
+    <div class="article">
+        <p>&nbsp;
+            Cafe-In은 사이렌오더, 가게 정보 확인, 지역별 카페 모아보기, 카페 리뷰 등록, 리뷰를 통합하여 순위를 선정, 카페 길 찾기
+            브랜드카페들에 밀리는 지역카페 활성화를 목표로 종류나 가격, 위치 등의 정보를 안내하여 편의성을 제공합니다.
+        </p>
+        <p>
+            24시나 스터디 카페들을 특징 별로 모아볼 수 있으며, 새로운 지역 방문 시 맞춤형 카페를
+            찾을 수 있고, 전화를 하지 않아도 간편하게 디저트 제품의 수량 확인 가능합니다.
+        </p>
+        <p>
+            인터넷에 검색을 하지 않아도 원하는 지역과 테마(24시간 카페, 스터디 카페 등)의 카페들을 보다
+            편리하게 확인할 수 있습니다. 또한 카페의 메뉴 및 가격을 한눈에 볼 수 있으며 스마트 오더 (결제 시스템)를 통해
+            쉽고 빠른 예약 및 결제가 가능합니다.
+        </p>
+
+    </div>
+    <div class="store">
+        <br>
+        <h2>Cafe-In에 등록된 가게</h2>
+        <hr/>
+        <table>
+            <tbody>
+            <tr>
+                <td><img src="/images/cafe/cafe1.jpg"></td>
+                <td><img src="/images/cafe/cafe2.jpg"></td>
+                <td><img src="/images/cafe/cafe3.jpg"></td>
+                <td><img src="/images/cafe/cafe4.jpg"></td>
+                <td><img src="/images/cafe/cafe5.jpg"></td>
+            </tr>
+            <tr>
+                <td><img src="/images/cafe/cafe6.jpg"></td>
+                <td><img src="/images/cafe/cafe7.jpg"></td>
+                <td><img src="/images/cafe/cafe8.jpg"></td>
+                <td><img src="/images/cafe/cafe9.jpg"></td>
+                <td><img src="/images/cafe/cafe10.jpg"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer>
+    &copy; 2020 Hansung University, Inc. &middot;
+</footer>
 </body>
 </html>

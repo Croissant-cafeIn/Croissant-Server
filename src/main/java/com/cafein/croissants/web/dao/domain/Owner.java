@@ -1,5 +1,6 @@
 package com.cafein.croissants.web.dao.domain;
 
+import com.cafein.croissants.web.dao.domain.exception.PasswordMismatchException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,5 +32,28 @@ public class Owner {
         }
 
         throw new IllegalArgumentException("비밀번호가 들립니다.");
+    }
+    public Owner checkPassword(String password) {
+        if(!password.equals(this.password)) {
+            throw new PasswordMismatchException();
+        }
+
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
